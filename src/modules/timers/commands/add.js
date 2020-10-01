@@ -12,7 +12,7 @@ exports.run = async (msg, args) => {
 
     const name = args[0];
 
-    const exists = bot.db.get('global', `timers[${name}]`);
+    const exists =await bot.db.get('global', `timers[${name}]`);
     if (exists) {
         await send(msg.channel, `Timer ${name} already exists.`);
         return true;
@@ -51,6 +51,6 @@ exports.config = {
     botPermissions: [], // Permissions needed by the bot to use this command.
     defaultPermissions: ['MANAGE_GUILD'], // Default permissions to use this command by user
     location: 'GUILD_ONLY', // 'GUILD_ONLY', 'DM_ONLY', 'ALL'
-    description: 'Sets the bot prefix for the server',
+    description: 'Creates timers',
     debug: false // This makes it unusable to anyone besides process.env.OWNER
 };
